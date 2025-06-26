@@ -2,4 +2,3 @@
 builder = "Dockerfile"
 
 [deploy]
-startCommand = "npm start"
