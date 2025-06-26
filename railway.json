@@ -4,8 +4,7 @@
     "builder": "dockerfile"
   },
   "deploy": {
-    "startCommand": "node dist/main.js",
-    "healthcheckPath": "/health",
+    "healthcheckPath": "/",
     "healthcheckTimeout": 100,
     "restartPolicyType": "on_failure",
     "restartPolicyMaxRetries": 10
