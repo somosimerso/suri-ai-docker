@@ -1,21 +1,18 @@
-# Dockerfile para Waha no Railway
 FROM devlikeapro/waha:latest
+LABEL platform=linux/amd64
 
-# Variáveis de ambiente para Railway
-ENV WAHA_HTTP_PORT=${PORT:-3000}
-ENV WAHA_LOG_LEVEL=info
-ENV WAHA_SESSION_STORE=file
-ENV WAHA_FILES_FOLDER=/app/files
-ENV WAHA_SWAGGER_ENABLED=true
+ENV WHATSAPP_DEFAULT_ENGINE=GOWS
+ENV WHATSAPP_HOOK_EVENTS=message
+ENV WAHA_HTTP_PORT=3000
 
-# Criar diretórios necessários
-RUN mkdir -p /app/files /app/sessions
+# Criar diretórios para sessões e mídia
+RUN mkdir -p /app/.sessions /app/.media
 
 # Definir diretório de trabalho
 WORKDIR /app
 
 # Expor a porta (Railway define automaticamente via $PORT)
-EXPOSE $PORT
+EXPOSE 3000
 
-# Comando para iniciar o serviço
+# Comando para iniciar o Waha
 CMD ["node", "dist/main.js"]
